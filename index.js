@@ -15,7 +15,7 @@ http: app.get('/cart-total', (req, res) => {
   let cartTotal = req.query.cartTotal;
 
   cartTotal = parseFloat(cartTotal) + parseFloat(newItemPrice);
-  res.json(cartTotal);
+  res.send(cartTotal);
 });
 
 // Endpoint 2 : Apply a discount based on membership status
@@ -27,7 +27,7 @@ app.get('/membership-discount', (req, res) => {
   if (isMember == 'true') {
     newPrice = cartTotal - (cartTotal * discountPercentage) / 100;
   }
-  res.json(newPrice);
+  res.send(newPrice);
 });
 
 //Endpoint 3 : Calculate tax on the cart total
@@ -36,7 +36,7 @@ app.get('/membership-discount', (req, res) => {
 app.get('/calculate-tax', (req, res) => {
   let cartTotal = parseFloat(req.query.cartTotal);
   let tax = (cartTotal * taxRate) / 100;
-  res.json(tax);
+  res.send(tax);
 });
 
 //Endpoint 4 : Estimate delivery time based on shipping method
@@ -50,7 +50,7 @@ app.get('/estimate-delivery', (req, res) => {
   } else if (shippingMethod == 'express') {
     estimatedDeliveryTime = distance / 100;
   }
-  res.json(estimatedDeliveryTime);
+  res.send(estimatedDeliveryTime);
 });
 
 // Endpoint 5 : Calculate the shipping cost based on weight and distance
@@ -59,7 +59,7 @@ app.get('/shipping-cost', (req, res) => {
   let weight = parseFloat(req.query.weight);
   let distance = parseFloat(req.query.distance);
   let cost = weight * distance * 0.1;
-  res.json(cost);
+  res.send(cost);
 });
 
 // Endpoint 6 : Calculate loyalty points earned from a purchase
@@ -67,7 +67,7 @@ app.get('/shipping-cost', (req, res) => {
 app.get('/loyalty-points', (req, res) => {
   let purchaseAmount = parseFloat(req.query.purchaseAmount);
   let loyaltyPoint = purchaseAmount * loyaltyRate;
-  res.json(loyaltyPoint);
+  res.send(loyaltyPoint);
 });
 
 app.listen(port, () => {
