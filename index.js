@@ -8,7 +8,7 @@ let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
 
-// Endpoint 1: Calculate the total price of items in the cart
+//Endpoint 1: Calculate the total price of items in the cart
 //localhost:3000/cart-total?newItemPrice=1200&cartTotal=0
 http: app.get('/cart-total', (req, res) => {
   let newItemPrice = req.query.newItemPrice;
