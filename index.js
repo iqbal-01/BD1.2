@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const { resolve } = require('path');
 
 const app = express();
 const port = 3010;
+
+app.use(cors());
 
 let taxRate = 5;
 let discountPercentage = 10;
